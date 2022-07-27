@@ -29,6 +29,11 @@ namespace EntityFrameworkCoreExample
                 // connection string: Server=(localdb)\\mssqllocaldb;Database="Insert_desired_name_here";Trusted_Connection=True;);
                 options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=EFCoreExample;Trusted_Connection=True;");
             }
+
+            // Tell EF Core to track Students in the database
+            public DbSet<Student> Students { get; set; }
+
+
         }
     }
 }
