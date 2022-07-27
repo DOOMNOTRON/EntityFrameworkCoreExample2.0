@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,18 @@ namespace EntityFrameworkCoreExample
         // To install the SQL Server provider, run the following command in the Package Manager Console:
         // Install-Package Microsoft.EntityFrameworkCore.SqlServer
 
-        internal class StudentContext
+        public class StudentContext : DbContext
         {
+            public StudentContext() // constructor
+            {
 
+            }
+
+            protected override void OnConfiguring(DbContextOptionsBuilder options)
+            {
+                // connection string: Server=(localdb)\\mssqllocaldb;Database="Insert_desired_name_here";Trusted_Connection=True;);
+                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=EFCoreExample;Trusted_Connection=True;");
+            }
         }
     }
 }
